@@ -7,7 +7,7 @@ import com.example.kpiz.models.Task_Models
 @Dao
 interface TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(todo: Task_Models)
+    fun insert(todo: Task_Models)
 
     @Delete
     fun delete(todo: Task_Models)
