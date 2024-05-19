@@ -11,13 +11,13 @@ import com.example.kpiz.models.TODO_Model
 @Dao
 interface TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(todo: TODO_Model.Todo)
+    suspend fun insert(todo: TODO_Model)
 
     @Delete
-    suspend fun delete(todo: TODO_Model.Todo)
+    suspend fun delete(todo: TODO_Model)
 
     @Query("SELECT * from todo_table order by id ASC")
-    fun getAllTodos(): LiveData<List<TODO_Model.Todo>>
+    fun getAllTodos(): LiveData<List<TODO_Model>>
 
     @Query("UPDATE todo_table set title = :title, note = :note where id = :id")
     suspend fun update(id: Int?, title: String?, note: String?)

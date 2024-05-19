@@ -8,7 +8,7 @@ import com.example.kpiz.models.TODO_Model
 
 const val DATABASE_NAME = "TODO_DATABASE";
 
-@Database(entities = arrayOf(TODO_Model.Todo::class), version = 1)
+@Database(entities = arrayOf(TODO_Model::class), version = 1)
 abstract class TodoDatabase : RoomDatabase() {
     abstract fun getTodoDao(): TodoDao
 
