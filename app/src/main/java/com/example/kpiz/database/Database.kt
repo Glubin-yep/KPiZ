@@ -4,12 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.kpiz.models.TODO_Model
+import com.example.kpiz.models.Task_Models
 
-const val DATABASE_NAME = "TODO_DATABASE";
-
-@Database(entities = arrayOf(TODO_Model::class), version = 1)
+@Database(entities = [Task_Models::class], version = 1, exportSchema = false)
 abstract class TodoDatabase : RoomDatabase() {
+
     abstract fun getTodoDao(): TodoDao
 
     companion object {
@@ -21,13 +20,11 @@ abstract class TodoDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     TodoDatabase::class.java,
-                    DATABASE_NAME
+                    "todo_database"
                 ).build()
-
                 INSTANCE = instance
                 instance
             }
         }
     }
-
 }

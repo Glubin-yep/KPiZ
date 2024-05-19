@@ -1,21 +1,24 @@
 package com.example.kpiz.database
 
 import androidx.lifecycle.LiveData
-import com.example.kpiz.models.TODO_Model
+import com.example.kpiz.models.Task_Models
 
-class TodoRepository(private val todoDao: TodoDao) {
+class ToDoRepository(
+    private val toDoDao: TodoDao
+) {
 
-    val allTodos: LiveData<List<TODO_Model>> = todoDao.getAllTodos()
+    val getAllData: LiveData<List<Task_Models>> =toDoDao.getAllTodos()
 
-    suspend fun insert(todo: TODO_Model){
-        todoDao.insert(todo)
+    suspend fun insertData(toDoData: Task_Models) {
+        toDoDao.insert(toDoData)
     }
 
-    suspend fun delete(todo: TODO_Model){
-        todoDao.delete(todo)
+    suspend fun update(toDoData: Task_Models){
+        toDoDao.update(toDoData.id, toDoData.title, toDoData.note)
     }
 
-    suspend fun update(todo: TODO_Model){
-        todoDao.update(todo.id, todo.title, todo.note)
+    suspend fun deleteItem(toDoData: Task_Models) {
+        toDoDao.delete(toDoData)
     }
+
 }

@@ -1,24 +1,20 @@
 package com.example.kpiz.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import com.example.kpiz.models.TODO_Model
+import androidx.room.*
+import com.example.kpiz.models.Task_Models
 
 @Dao
 interface TodoDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(todo: TODO_Model)
+    suspend fun insert(todo: Task_Models)
 
     @Delete
-    suspend fun delete(todo: TODO_Model)
+    fun delete(todo: Task_Models)
 
     @Query("SELECT * from todo_table order by id ASC")
-    fun getAllTodos(): LiveData<List<TODO_Model>>
+    fun getAllTodos(): LiveData<List<Task_Models>>
 
     @Query("UPDATE todo_table set title = :title, note = :note where id = :id")
-    suspend fun update(id: Int?, title: String?, note: String?)
+    fun update(id: Int?, title: String?, note: String?)
 }
