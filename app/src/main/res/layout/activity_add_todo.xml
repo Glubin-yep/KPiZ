@@ -33,7 +33,7 @@
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/check" />
+            app:srcCompat="@drawable/cheak" />
 
         <ImageView
             android:id="@+id/img_delete"
